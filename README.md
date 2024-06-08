@@ -1,3 +1,9 @@
+#1 BUILD
+docker build -t ng-standalone-docker .   
+
+#2 RUN
+docker run -p 4200:4200 ng-standalone-docker
+
 # NgStandaloneDocker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
