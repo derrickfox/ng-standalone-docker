@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+# Install Chokidar to improve file watching
+RUN npm install chokidar
+
 # Expose port 4200 to the outside world
 EXPOSE 4200
 
 # Serve the application
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
