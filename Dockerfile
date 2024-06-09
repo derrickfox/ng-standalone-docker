@@ -7,17 +7,14 @@ WORKDIR /app
 # Copy the package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install the dependencies
-RUN npm install
+# Install the dependencies with --legacy-peer-deps to handle conflicts
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of the application code to the working directory
 COPY . .
-
-# Install Chokidar to improve file watching
-RUN npm install chokidar
 
 # Expose port 4200 to the outside world
 EXPOSE 4200
 
 # Serve the application
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
