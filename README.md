@@ -2,7 +2,7 @@
 docker build -t ng-standalone-docker .   
 
 #2 RUN
-docker run -p 4200:4200 ng-standalone-docker
+docker run -v ${PWD}:/app -v /app/node_modules -p 4200:4200 --rm ng-standalone-docker
 
 # NgStandaloneDocker
 

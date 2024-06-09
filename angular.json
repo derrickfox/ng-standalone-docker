@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ng-standalone-docker",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,7 +28,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
@@ -55,23 +56,24 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "poll": 1000,
+            "liveReload": true
+          },
           "configurations": {
             "production": {
-              "buildTarget": "ng-standalone-docker:build:production",
-              "liveReload": true,
-              "poll": 1000
+              "buildTarget": "ng-standalone-docker:build:production"
             },
             "development": {
-              "buildTarget": "ng-standalone-docker:build:development",
-              "liveReload": true,
-              "poll": 1000
+              "buildTarget": "ng-standalone-docker:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +93,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
@@ -102,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

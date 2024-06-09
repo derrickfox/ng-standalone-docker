@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <h2>Example 2 Component</h2>
-      <p>This is content from the Example 2 component.</p>
+      <p>This is content from the Example 2 component.!!!!</p>
     </div>
   `,
   styles: [
